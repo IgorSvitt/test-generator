@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-mutation-test-generator"
+version = "0.1.0"
+description = "Automatic pytest generation with LLM and mutation-testing feedback"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [
+  { name = "Igor Nikolaev" }
+]
+keywords = ["pytest", "mutation-testing", "llm", "test-generation", "mutmut"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development :: Testing",
+]
+dependencies = [
+  "litellm>=1.40.0",
+  "pytest>=8.0.0",
+  "mutmut>=3.0.0",
+  "mypy>=1.10.0",
+  "python-dotenv>=1.0.0",
+  "rich>=13.7.0",
+]
+
+[project.scripts]
+test-generator = "test_generator.main:main"
+
+[tool.setuptools.packages.find]
+include = ["test_generator*"]
+exclude = ["src*", "tests*"]
